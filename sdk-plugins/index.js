@@ -1,13 +1,14 @@
 const Contentstack = require("contentstack");
-
-export default {
-  getEntryWithRef(ctUid, ref, locale) {
-    return new Promise((resolve, reject) => {
-      const Stack = Contentstack.Stack({
+const Stack = Contentstack.Stack({
         api_key: process.env.api_key,
         delivery_token: process.env.delivery_token,
         environment: process.env.environment,
+        region: process.env.region
       });
+export default {
+  getEntryWithRef(ctUid, ref, locale) {
+    return new Promise((resolve, reject) => {
+      
       Stack.ContentType(ctUid)
         .Query()
         .language(locale || 'en-us')
@@ -27,11 +28,7 @@ export default {
   },
   getEntryWithoutRef(ctUid, locale) {
     return new Promise((resolve, reject) => {
-      const Stack = Contentstack.Stack({
-        api_key: process.env.api_key,
-        delivery_token: process.env.delivery_token,
-        environment: process.env.environment,
-      });
+     
       Stack.ContentType(ctUid)
         .Query()
         .language(locale)
@@ -50,11 +47,7 @@ export default {
   },
   getEntrySpecific(ctUid, entryId, locale) {
     return new Promise((resolve, reject) => {
-      const Stack = Contentstack.Stack({
-        api_key: process.env.api_key,
-        delivery_token: process.env.delivery_token,
-        environment: process.env.environment,
-      });
+      
       Stack.ContentType(ctUid)
         .Entry(entryId)
         // .language(locale)
@@ -70,11 +63,7 @@ export default {
     });
   },  getEntrySpecificWithRef(ctUid, entryId,ref, locale) {
     return new Promise((resolve, reject) => {
-      const Stack = Contentstack.Stack({
-        api_key: process.env.api_key,
-        delivery_token: process.env.delivery_token,
-        environment: process.env.environment,
-      });
+      
       Stack.ContentType(ctUid)
         .Entry(entryId)
         .language(locale)
@@ -92,11 +81,7 @@ export default {
   },
   getEntryWithQuery(ctUid, type, locale) {
     return new Promise((resolve, reject) => {
-    const Stack = Contentstack.Stack({
-      api_key: process.env.api_key,
-      delivery_token: process.env.delivery_token,
-      environment: process.env.environment,
-    });
+   
     Stack.ContentType(ctUid)
       .Query()
       .language(locale)
