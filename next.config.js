@@ -1,4 +1,4 @@
-console.log(process.env.test, process.env.test2, process.env.test3, 'env variables')
+console.log(process.env.test, process.env.test2, process.env.test3, 'env variables');
 module.exports = {
   env: {
     api_key: "bltbbf9dda285996efa",
